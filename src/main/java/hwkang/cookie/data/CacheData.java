@@ -13,14 +13,21 @@ import java.util.List;
 @NoArgsConstructor
 public class CacheData {
 
-    private String id;
+    private String key;
+
+    private String userId;
+    private String ip;
     private List<String> list;
-    private LocalDateTime localDateTime;
+    private String useAt;
+    private LocalDateTime expirationTime;
 
     @Builder
-    public CacheData(String id, List<String> list, LocalDateTime localDateTime) {
-        this.id = id;
+    public CacheData(String userId, String ip, List<String> list, String userAt, LocalDateTime expirationTime) {
+        this.userId = userId;
+        this.ip = ip;
         this.list = list;
-        this.localDateTime = localDateTime;
+        this.expirationTime = expirationTime;
+
+        this.key = userId + "::" + ip;
     }
 }
